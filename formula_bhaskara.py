@@ -1,21 +1,29 @@
 import math
 
-a = float(input("Qual o valor de A?:"))
-b = float(input("Qual o valor de B?:"))
-c = float(input("Qual o valor de C?:"))
+a = float(input("Qual o valor de a?:"))
+b = float(input("Qual o valor de b?:"))
+c = float(input("Qual o valor de c?:"))
 
 delta = (b**2) - (4*a*c)
-raizDelta = math.sqrt(delta)
 
-raiz1 = ((-(b)) + raizDelta)/2*a
-raiz2 = ((-(b)) - raizDelta)/2*a
+
 
 if delta == 0:
-    print("A equação contem apenas uma raiz:",raiz1)
+    raizDelta = math.sqrt(delta)
+    raiz1 = (-b + raizDelta)/ (2*a)
+    print("a raiz desta equação é",raiz1)
 if delta < 0:
-    print("A equação não contem raizes reais")
+    print("esta equação não possui raízes reais")
 if delta > 0:
-    print("A equação contem duas raizes:",raiz1,"e",raiz2)
+    raizDelta = math.sqrt(delta)
+    raiz1 = (-b + raizDelta)/ (2*a)
+    raiz2 = (-b - raizDelta)/ (2*a)
+    #ordem crescente 
+    if raiz1 < raiz2:
+        print("as raízes da equação são",raiz1,"e",raiz2)
+    else:
+         print("as raízes da equação são",raiz2,"e",raiz1)
+    
 
 
 
