@@ -6,8 +6,6 @@ c = float(input("Qual o valor de c?:"))
 
 delta = (b**2) - (4*a*c)
 
-
-
 if delta == 0:
     raizDelta = math.sqrt(delta)
     raiz1 = (-b + raizDelta)/ (2*a)
@@ -22,7 +20,7 @@ if delta > 0:
     if raiz1 < raiz2:
         print("as raízes da equação são",raiz1,"e",raiz2)
     else:
-         print("as raízes da equação são",raiz2,"e",raiz1)
+        print("as raízes da equação são",raiz2,"e",raiz1)
     
 
 
