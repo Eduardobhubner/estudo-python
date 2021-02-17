@@ -1,4 +1,4 @@
-numero = float(input("Entrada do número que desejar:"))
+numero = float(input("Digite um número inteiro:"))
 vezesLoop = len(str(numero))
 contador = 0
 i = 0
@@ -9,6 +9,6 @@ while i <= vezesLoop:
     contador = contador + resultado
     numero = numero // 10
     i = i + 1
-print("A soma dos números é",contador)
+print(contador)
     
 
