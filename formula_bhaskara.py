@@ -6,15 +6,18 @@ c = float(input("Qual o valor de c?:"))
 
 delta = (b**2) - (4*a*c)
 
-if delta == 0:
-    raizDelta = math.sqrt(delta)
+def calculaRaiz1(a,b,c):
+    raizDelta = math.sqrt(c)
     raiz1 = (-b + raizDelta)/ (2*a)
-    print("a raiz desta equação é",raiz1)
+    return raiz1
+
+if delta == 0:
+    print("a raiz desta equação é",calculaRaiz1(a,b,delta))
 if delta < 0:
     print("esta equação não possui raízes reais")
 if delta > 0:
     raizDelta = math.sqrt(delta)
-    raiz1 = (-b + raizDelta)/ (2*a)
+    raiz1 = calculaRaiz1(a,b,delta)
     raiz2 = (-b - raizDelta)/ (2*a)
     #ordem crescente 
     if raiz1 < raiz2:
