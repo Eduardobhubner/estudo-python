@@ -1,34 +1,55 @@
 import random
 
-print("********************************")
-print("Bem vindo ao jogo de adivinhacao")
-print("********************************")
+print("*********************************")
+print("Bem vindo ao jogo de Adivinhação!")
+print("*********************************")
 
-numero_de_adivinhacao = random.randrange(1,11)
+numero_secreto = random.randrange(1, 101)
+total_de_tentativas = 0
+pontos = 1000
 
-#print(numero_de_adivinhacao)
-numero_de_tentativas = 3
-rodada = 0
+print("Qual o nível de dificuldade?")
+print("(1) Fácil (2) Médio (3) Difícil")
 
-for rodada in range(1, numero_de_tentativas + 1):
-    numero_do_usuario = int(input("digite um numero inteíro de 1 há 10: "))
+nivel = int(input("Defina o nível: "))
 
-    if(numero_do_usuario < 1 or numero_de_tentativas > 10):
-        print("Você precisa escolher apenas um número de 1 há 100")
+if(nivel == 1):
+    total_de_tentativas = 20
+elif(nivel == 2):
+    total_de_tentativas = 10
+else:
+    total_de_tentativas = 5
+
+for rodada in range(1, total_de_tentativas + 1):
+    print("Tentativa {} de {}".format(rodada, total_de_tentativas))
+
+    chute_str = input("Digite um número entre 1 e 100: ")
+    print("Você digitou ", chute_str)
+    chute = int(chute_str)
+
+    if(chute < 1 or chute > 100):
+        print("Você deve digitar um número entre 1 e 100!")
         continue
 
-    acertou = numero_do_usuario == numero_de_adivinhacao
-    maior = numero_do_usuario > numero_de_adivinhacao
-    menor = numero_do_usuario < numero_de_adivinhacao
+    acertou = chute == numero_secreto
+    maior = chute > numero_secreto
+    menor = chute < numero_secreto
 
-    if numero_do_usuario == numero_de_adivinhacao:
-        print("Você acertou")
+    if(acertou):
+        print("Você acertou e fez {} pontos!".format(pontos))
         break
     else:
-        print("tentativas: {} de {}".format(rodada, numero_de_tentativas))
-        if maior:
-            print("Você chutou acima do numero secreto")
-        elif menor:  # poderia colocar apenas else por ser condição booleana
-            print("Você chutou abaixo do numero secreto")
+        pontos_perdidos = abs(numero_secreto - chute)
+        pontos = pontos - pontos_perdidos
+        if(maior):
+            print("O seu chute foi maior que o número secreto")
+            if (rodada == total_de_tentativas):
+                print("O número secreto era {}. Você fez {}".format(
+                    numero_secreto, pontos))
+        elif(menor):
+            print("Você errou! O seu chute foi menor do que o número secreto.")
+            if (rodada == total_de_tentativas):
+                print("O número secreto era {}. Você fez {}".format(
+                    numero_secreto, pontos))
 
-print("fim de jogo")
+print("Fim do jogo")
